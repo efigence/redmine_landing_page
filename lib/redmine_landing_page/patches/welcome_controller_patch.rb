@@ -5,9 +5,7 @@ module RedmineLandingPage
         base.class_eval do
           unloadable
 
-          alias_method :index_without_landing_page, :index
-
-          def index
+          def index_with_landing_page
             if User.current.logged? && User.current.landing_page &&
                !User.current.landing_page.empty? && get_landing_page? &&
                User.current.landing_page != "/"
@@ -16,6 +14,8 @@ module RedmineLandingPage
               index_without_landing_page
             end
           end
+
+          alias_method_chain :index, :landing_page
 
           private
             def get_landing_page?
