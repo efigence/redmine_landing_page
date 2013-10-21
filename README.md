@@ -9,7 +9,7 @@ Developed & tested on Redmine 2.3.3.
 # Installation
 
 1. Go to your Redmine installation's plugins/ directory.
-2. `git clone http://github.com/efigence/redmine_landing_pages`
+2. `git clone http://github.com/efigence/redmine_landing_page`
 3. Migrate: `rake redmine:plugins:migrate RAILS_ENV=production`
 4. Restart Redmine.
 
