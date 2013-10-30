@@ -10,8 +10,12 @@ Developed & tested on Redmine 2.3.3.
 
 1. Go to your Redmine installation's plugins/ directory.
 2. `git clone http://github.com/efigence/redmine_landing_page`
-3. Migrate: `rake redmine:plugins:migrate RAILS_ENV=production`
-4. Restart Redmine.
+3. Go back to root directory.
+4. `bundle install` to add `haml` gem.
+5. Migrate (depending on which environment you're currently working on):
+`rake redmine:plugins:migrate RAILS_ENV=production` or
+`rake redmine:plugins:migrate RAILS_ENV=development`
+6. Restart Redmine.
 
 # Usage
 
