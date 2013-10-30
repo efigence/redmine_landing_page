@@ -11,7 +11,7 @@ Redmine::Plugin.register :redmine_landing_page do
   settings :default => {
     pages: {
       'page1' => { name: 'Home',     path: '/' },
-      'page2' => { name: 'My Pages', path: '/my/page' },
+      'page2' => { name: 'My Page', path: '/my/page' },
       'page3' => { name: 'Projects', path: '/projects'}
     }
     }, :partial => 'settings/landing_page_settings'
