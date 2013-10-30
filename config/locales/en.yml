@@ -1,2 +1,6 @@
 en:
   field_landing_page: "Landing Page"
+  name: "Name:"
+  path: "Path:"
+  remove: "remove"
+  add_new: "add new"
