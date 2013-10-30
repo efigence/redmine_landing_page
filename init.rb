@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_landing_page do
       'page2' => { name: 'My Pages', path: '/my/page' },
       'page3' => { name: 'Projects', path: '/projects'}
     }
-    }, :partial => 'settings/landing_pages'
+    }, :partial => 'settings/landing_page_settings'
 end
 
 ActionDispatch::Callbacks.to_prepare do
