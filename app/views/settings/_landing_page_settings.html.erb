@@ -1,0 +1,30 @@
+<div class="clonedInput" id="input-default" style="margin:15px 0px; display:none;">
+  <%= t('name') %>
+  <input autocomplete="off" class="name" disabled="disabled" name="settings[[pages][page{{page-name-id %> %>][name]]" type="text"></input>
+  <%= t('path') %>
+  <input autocomplete="off" class="value" disabled="disabled" name="settings[[pages][page{{page-value-id %> %>][path]]" type="text"></input>
+  <a class="btnDel" href="#">
+    <%= t('remove') %>
+  </a>
+</div>
+<div id="list">
+  <% if !Setting.plugin_redmine_landing_page.blank? %>
+    <% Setting.plugin_redmine_landing_page[:pages].each_with_index do |(k,v),i| %>
+      <div class="clonedInput" id="input<%= i+1 %>" style="margin:15px 0px;">
+        <%= t('name') %>
+        <input autocomplete="off" id="page_name<%= i+1 %>" name="settings[[pages][page<%= i+1 %>][name]]" type="text" value="<%= v[:name] %>"></input>
+        <%= t('path') %>
+        <input autocomplete="off" id="page_path<%= i+1 %>" name="settings[[pages][page<%= i+1 %>][path]]" type="text" value="<%= v[:path] %>"></input>
+        <a class="btnDel" href="#">
+          <%= t('remove') %>
+        </a>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <input id="btnAdd" type="button" value="<%= t('add_new') %>"></input>
+</div>
+<% content_for :header_tags do %>
+  <%= javascript_include_tag 'new_form', :plugin => 'redmine_landing_page' %>
+<% end %>
