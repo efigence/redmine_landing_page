@@ -23,9 +23,6 @@ ActionDispatch::Callbacks.to_prepare do
 
   require_dependency 'welcome_controller'
   WelcomeController.send(:include, RedmineLandingPage::Patches::WelcomeControllerPatch)
-
-  require_dependency 'application_helper'
-  ActionView::Base.send(:include, RedmineLandingPage::Patches::ApplicationHelperPatch)
 end
 
 require 'redmine_landing_page/hooks/view_my_account_hook'

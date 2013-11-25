@@ -1,1 +1,1 @@
-<p><%= form.select :landing_page, landing_page_select_opts %></p>
+<p><%= form.select :landing_page, Setting.plugin_redmine_landing_page[:pages].map { |_,v| [v[:name], v[:path]] } %></p>
