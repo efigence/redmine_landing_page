@@ -7,7 +7,7 @@ module RedmineLandingPage
 
           def index_with_landing_page
             if show_landing_page?
-              redirect_to User.current.landing_page, :status => 302
+              redirect_to landing_page_url, :status => 302
             else
               index_without_landing_page
             end
@@ -18,21 +18,19 @@ module RedmineLandingPage
           private
 
           def show_landing_page?
-            User.current.logged? && proper_referer? && proper_landing_page?
+            User.current.logged? && referer_check && applicable_landing_page?
           end
 
-          def proper_referer?
-            if request.env['HTTP_REFERER'] == "#{request.scheme}://#{request.host_with_port}/login"
-              true
-            elsif Regexp.new(request.host_with_port) =~ request.env['HTTP_REFERER']
-              false
-            else
-              true
-            end
+          def referer_check
+            request.referer.nil? || request.referer =~ Regexp.new(signin_url)
           end
 
-          def proper_landing_page?
+          def applicable_landing_page?
             !User.current.landing_page.blank? && User.current.landing_page != "/"
+          end
+
+          def landing_page_url
+            "#{home_url.chomp('/')}#{User.current.landing_page}"
           end
         end
       end
